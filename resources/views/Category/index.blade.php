@@ -6,7 +6,8 @@
     <div class="col-2"></div>
     <div class="col-8 align-center">
         <div class="col-4 mb-3">
-
+            <a href="{{ route('category.create') }}" class="btn btn-outline-primary align-center mt-4">Add
+                Category</a>
         </div>
         <table class="table ">
             <tr class="bg-primary text-white">

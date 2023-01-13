@@ -26,7 +26,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        //get all categories and add them to the view for select
+        $categories = Category::all();
+        return view('Category.create')->with('categories', $categories);
     }
 
     /**
@@ -37,7 +39,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //add category process
+        $cat = new Category();
+        $cat->name = $request->input('name');
+        if ($request->input('parentCategory') == "00") {
+            $cat->parent_category = null;
+        } else {
+            $cat->parent_category = $request->input('parentCategory');
+        }
+        $cat->save();
+        return redirect()->route("category.index")->with([
+            "success" => "Category added successfully"
+        ]);
     }
 
     /**
