@@ -16,7 +16,9 @@ class CategoryController extends Controller
     {
         //get all categories and add them to the view
         $categories = Category::all();
-        return view('Category.index')->with('categories', $categories)->with('category_parent');
+        return view('Category.index')->with('categories', $categories)->with('category_parent')->with([
+            "success" => NULL
+        ]);;
     }
 
     /**
@@ -39,6 +41,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        //validation
+        $messages = [
+            'name.required' => 'Name Should not be empty',
+
+        ];
+        $this->validate(
+            $request,
+            [
+                'name' => 'required'
+
+            ],
+            $messages
+        );
         //add category process
         $cat = new Category();
         $cat->name = $request->input('name');

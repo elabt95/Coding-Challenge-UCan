@@ -7,6 +7,16 @@
             <h3 class="text-primary text-center mt-5 mb-5">Add Category </h3>
             <form method="POST" action="{{ route('category.store') }}">
                 @csrf
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+
+                </div>
+                @endif
 
 
                 <div class="form-group mb-3">
