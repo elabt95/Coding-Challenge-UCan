@@ -40,6 +40,16 @@
                     -
                     @endif
                 </td>
+                <td>
+                    <form id="{{$categorie->id}}" action="{{route('category.destroy',$categorie->id)}}" method="post">
+                        @csrf
+
+                        @method("DELETE")
+
+                        <button onclick="return confirm('Are you sure?');" type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i></button>
+                    </form>
+                </td>
             </tr>
             @endforeach
 
