@@ -5380,25 +5380,119 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       prods: this.products,
+      idcatselected: "00",
       productsVueArray: [],
       idfiltreselected: "0"
     };
   },
-  methods: {},
+  methods: {
+    //filtre By categorie
+    filtreByCat: function filtreByCat() {
+      var _this = this;
+      //Category not defined
+      if (this.idcatselected === "00") {
+        //make the array empty
+        this.productsVueArray.splice(0);
+        //show all products
+        console.log(this.products);
+        //add products in productsvuearray
+        this.products.forEach(function (element) {
+          _this.productsVueArray.push(element);
+        });
+        return this.products;
+      } else {
+        //make the array empty
+        this.productsVueArray.splice(0);
+        //add products in productsvuearray filtred by idcategory selected
+        this.products.forEach(function (element) {
+          element.categories.forEach(function (item) {
+            if (item.id === _this.idcatselected) {
+              console.log("found" + element.name);
+              _this.productsVueArray.push(element);
+            }
+          });
+        });
+        return this.productsVueArray;
+      }
+    },
+    //sort Product By Column
+    sortByCol: function sortByCol() {
+      //sort Product By date DESC
+      if (this.idfiltreselected == "0") {
+        this.productsVueArray.sort(function (a, b) {
+          return a.id < b.id ? 1 : -1;
+        });
+      }
+      //sort Product By Price ASC
+      else if (this.idfiltreselected == "1") {
+        this.productsVueArray.sort(function (a, b) {
+          return a.price > b.price ? 1 : -1;
+        });
+      }
+      //sort Product By Price DESC
+      else if (this.idfiltreselected == "2") {
+        this.productsVueArray.sort(function (a, b) {
+          return a.price < b.price ? 1 : -1;
+        });
+      }
+      //sort Product By date ASC
+      else if (this.idfiltreselected == "3") {
+        this.productsVueArray.sort(function (a, b) {
+          return a.id > b.id ? 1 : -1;
+        });
+      }
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
     //make the array empty
     this.productsVueArray.splice(0);
     //show all products
     console.log(this.products);
     //add products in productsvuearray
     this.products.forEach(function (element) {
-      _this.productsVueArray.push(element);
+      _this2.productsVueArray.push(element);
     });
     //show products sorted by date
     this.productsVueArray.sort(function (a, b) {
@@ -28356,6 +28450,127 @@ var render = function () {
     [
       _c("h3", { staticClass: "col-10 text-primary text-center mt-5 mb-5" }, [
         _vm._v("Product List"),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2 mb-5" }, [
+        _c("label", { staticClass: "mb-2" }, [_vm._v("Category")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.idcatselected,
+                expression: "idcatselected",
+              },
+            ],
+            staticClass: "form-select float-left",
+            on: {
+              change: [
+                function ($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function (o) {
+                      return o.selected
+                    })
+                    .map(function (o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.idcatselected = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.filtreByCat,
+              ],
+            },
+          },
+          [
+            _c("option", { attrs: { value: "00" } }, [
+              _vm._v("Choose category"),
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.categoriesv, function (categoryv, index) {
+              return _c(
+                "option",
+                {
+                  key: index,
+                  domProps: { value: categoryv.id },
+                  on: {
+                    click: function ($event) {
+                      return _vm.filtreByCat(categoryv.id)
+                    },
+                  },
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(categoryv.name) +
+                      "\n            "
+                  ),
+                ]
+              )
+            }),
+          ],
+          2
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("label", { staticClass: "mb-2" }, [_vm._v("Sort")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.idfiltreselected,
+                expression: "idfiltreselected",
+              },
+            ],
+            staticClass: "form-select float-right",
+            on: {
+              change: [
+                function ($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function (o) {
+                      return o.selected
+                    })
+                    .map(function (o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.idfiltreselected = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.sortByCol,
+              ],
+            },
+          },
+          [
+            _c("option", { attrs: { value: "0" } }, [_vm._v("New to Old")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v("Low to High Price"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v("High to Low Price"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("Old to New")]),
+          ]
+        ),
       ]),
       _vm._v(" "),
       _vm._l(_vm.productsVueArray, function (prod, index) {
