@@ -23,7 +23,13 @@
             </select>
         </div>
         <div class="col-2"></div>
-        <div class="col-4"></div>
+        <div class="col-4">
+            <a
+                :href="linkcreate"
+                class="btn btn-outline-primary align-center mt-4"
+                >Add Product</a
+            >
+        </div>
         <div class="col-2">
             <label class="mb-2">Sort</label>
             <select
@@ -73,6 +79,7 @@ export default {
             idcatselected: "00",
             productsVueArray: [],
             idfiltreselected: "0",
+            linkcreate: this.linkadd,
         };
     },
     methods: {
@@ -140,7 +147,7 @@ export default {
         //show products sorted by date
         this.productsVueArray.sort((a, b) => (a.id < b.id ? 1 : -1));
     },
-    props: ["products", "categoriesv"],
+    props: ["products", "categoriesv", "linkadd"],
     mounted() {
         console.log("Component mounted.");
     },

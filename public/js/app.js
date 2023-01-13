@@ -5416,6 +5416,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5423,7 +5429,8 @@ __webpack_require__.r(__webpack_exports__);
       prods: this.products,
       idcatselected: "00",
       productsVueArray: [],
-      idfiltreselected: "0"
+      idfiltreselected: "0",
+      linkcreate: this.linkadd
     };
   },
   methods: {
@@ -5499,7 +5506,7 @@ __webpack_require__.r(__webpack_exports__);
       return a.id < b.id ? 1 : -1;
     });
   },
-  props: ["products", "categoriesv"],
+  props: ["products", "categoriesv", "linkadd"],
   mounted: function mounted() {
     console.log("Component mounted.");
   },
@@ -28521,7 +28528,16 @@ var render = function () {
       _vm._v(" "),
       _c("div", { staticClass: "col-2" }),
       _vm._v(" "),
-      _c("div", { staticClass: "col-4" }),
+      _c("div", { staticClass: "col-4" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-outline-primary align-center mt-4",
+            attrs: { href: _vm.linkcreate },
+          },
+          [_vm._v("Add Product")]
+        ),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-2" }, [
         _c("label", { staticClass: "mb-2" }, [_vm._v("Sort")]),
