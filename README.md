@@ -1,3 +1,74 @@
+## Project Title
+MyStoreCan -Ecommerce website-
+## Project Description
+The main role of <b>MyStoreCan</b> is managing the stock of products and give the visitors the opportunity to shop any product in the stock online.
+Also, its an open Source Project the you can use following the steps of installation and it's developped using HTML, CSS (Bootstrap),PHP (Laravel), Javascript (VueJS)
+### Installing
+```
+--git clone https://github.com/elabt95/MyTestUCan.git
+``` 
+<p> Modify <b>.env file :</b></p>
+<ul>
+    <li>Add DB Name</li>
+    <li>Username and Password of MySQL</li>
+</ul>
+<p> Install <b>Composer</b>:</p>
+
+```
+--composer install
+```
+<p> Install <b>VueJS</b>:</p>
+
+```
+--npm install
+--npm run dev
+--npm run watch
+```
+<p> Migrate <b>Database</b>:</p>
+
+```
+--php artisan migrate
+```
+
+### Executing program
+
+* Run the server
+```
+--php artisan serve
+```
+* If you want to add Random data in product table 
+```
+--php artisan db:seed
+```
+### Table of Content
+*<b> Add Product in CLI</b>
+```
+--php artisan tinker
+```
+* then add products with your custom values in this command
+```
+--DB::table('products')->insertGetId(['id'=>NULL,'name'=>'prod1','description'=>'prod1 description','price'=>'12.12','image'=>'imgprod/noimage.png','created_at'=>NOW(),'updated_at'=>NOW()]);
+```
+* You will get the id of inserted product and use it to add categories of the product
+```
+--DB::table('category_produit')->insertGetId(['id'=>NULL,'id_produit'=>'6','id_category'=>'2']);
+
+
+```
+### How to Use the Project
+* Create your account in <b>Register</b>.
+![register crp](https://user-images.githubusercontent.com/119502734/211895613-13e8bd55-9430-4427-ade6-bb2ac6e875bf.jpg)
+
+* Login to your <b>Account</b>.
+![login crp](https://user-images.githubusercontent.com/119502734/211895869-077889dc-89c1-4b50-b37f-0b43ecb2246a.jpg)
+
+* After login you will be on <b>the product page</b> where you can see products or add a new product
+![product page crp](https://user-images.githubusercontent.com/119502734/211896138-c7b7b300-33d0-41f6-abec-3283edd1d517.jpg)
+
+* Also you can <b>manage Categories</b> by clicking on Category on the top menu
+![category page crp](https://user-images.githubusercontent.com/119502734/211896372-edba56bc-4f58-440c-bcd4-552d96dcf6af.jpg)
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
